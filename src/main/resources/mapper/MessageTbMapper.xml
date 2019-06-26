@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.manager.woods.message.dao.MessageTbDao" >
+    <resultMap id="BaseResultMap" type="com.manager.woods.message.model.MessageTb" >
+        <result column="mesgID" property="mesgId" jdbcType="INTEGER" />
+        <result column="RESERVID" property="reservId" jdbcType="INTEGER" />
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="mesgStatu" property="mesgStatu" jdbcType="VARCHAR" />
+        <result column="illPhoneNum" property="illPhoneNum" jdbcType="VARCHAR" />
+        <result column="illEmail" property="illEmail" jdbcType="VARCHAR" />
+        <result column="illGender" property="illGender" jdbcType="VARCHAR" />
+        <result column="hospitalId" property="hospitalId" jdbcType="VARCHAR" />
+        <result column="reservStatu" property="reservStatu" jdbcType="INTEGER" />
+        <result column="reservTime" property="reservTime" jdbcType="TIMESTAMP" />
+        <result column="hospitalName" property="hospitalName" jdbcType="VARCHAR" />
+        <result column="illCallName" property="illCallName" jdbcType="VARCHAR" />
+        <result column="userId" property="userId" jdbcType="INTEGER" />
+        <result column="symptom" property="symptom" jdbcType="VARCHAR" />
+        <result column="volCallName" property="volCallName" jdbcType="VARCHAR" />
+        <result column="volPhoneNum" property="volPhoneNum" jdbcType="VARCHAR" />
+        <result column="volEmail" property="volEmail" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="findMessage" resultMap="BaseResultMap">
+   SELECT
+	  a.ID,
+	  a.HOSPITALID,
+	  c.HOSPITALNAME,
+	  a.RESERVTIME,
+	  a.USERID,
+	  a.PHONENUM illPhoneNum,
+	  a.EMAIL illEmail,
+	  a.HOSPITALID,
+	  a.GENDER illGender,
+	  a.CALLNAME illCallName,
+	  a.SYMPTOM,
+      CASE WHEN ISNULL(a.VOLUNID) OR d.reservStatu = 1 THEN NULL ELSE (SELECT PHONENUMBER  FROM user_tb  WHERE id = a.VOLUNID) end volPhoneNum,
+      CASE WHEN ISNULL(a.VOLUNID) OR d.reservStatu = 1 THEN NULL ELSE (SELECT EMAIL  FROM user_tb  WHERE id = a.VOLUNID) end volEmail,
+      CASE WHEN ISNULL(a.VOLUNID) OR d.reservStatu = 1  THEN NULL ELSE (SELECT NAMED  FROM user_tb  WHERE id = a.VOLUNID) end volCallName,
+	  d.MESGSTATU,
+	  d.RESERVStatu,
+	  d.id mesgID
+    FROM
+	  reserv_tb a,
+	  user_tb b,
+	  hospital_tb c,
+	  message_tb d
+    WHERE
+	   a.USERID = b.id
+   AND a.HOSPITALID = c.ID
+   AND d.RESERVID = a.ID
+   AND a.USERID = d.USERID
+   AND d.USERID = #{id}
+   AND d.MESGSTATU != 3
+    </select>
+
+
+
+    <update id="readMessage" parameterType="java.lang.Integer">
+     UPDATE message_tb
+     SET
+        MESGSTATU = 2
+     WHERE
+	   ID = #{mesgId};
+    </update>
+
+    <update id="deleteMessage" parameterType="java.lang.Integer">
+     UPDATE message_tb
+     SET
+        MESGSTATU = 3
+     WHERE
+	   ID = #{mesgId};
+    </update>
+
+    <insert id="addMessage" parameterType="com.manager.woods.message.model.MessageTb">
+        INSERT INTO message_tb (
+        RESERVID,
+        USERID,
+        MESGSTATU,
+        RESERVSTATU
+        )
+        VALUES
+        (#{reservId},
+        #{userId},
+        '1',
+        #{reservStatu});
+    </insert>
+
+</mapper>

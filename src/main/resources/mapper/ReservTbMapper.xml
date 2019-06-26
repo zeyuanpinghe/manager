@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.manager.woods.reserv.dao.ReservTbDao" >
+    <resultMap id="BaseResultMap" type="com.manager.woods.reserv.model.ReservTb" >
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="statu" property="statu" jdbcType="VARCHAR" />
+        <result column="phoneNum" property="phoneNum" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="gender" property="gender" jdbcType="VARCHAR" />
+        <result column="hospitalId" property="hospitalId" jdbcType="VARCHAR" />
+        <result column="reservStatu" property="reservStatu" jdbcType="INTEGER" />
+        <result column="reservTime" property="reservTime" jdbcType="TIMESTAMP" />
+        <result column="hospitalName" property="hospitalName" jdbcType="VARCHAR" />
+        <result column="roleLevel" property="roleLevel" jdbcType="VARCHAR" />
+        <result column="userId" property="userId" jdbcType="INTEGER" />
+        <result column="symptom" property="symptom" jdbcType="VARCHAR" />
+        <result column="VOLPHONENUMBER" property="volunPhone" jdbcType="VARCHAR" />
+        <result column="VOLEMAIL" property="volunEmail" jdbcType="VARCHAR" />
+        <result column="VOLNAMED" property="volunNamed" jdbcType="VARCHAR" />
+
+    </resultMap>
+
+    <select id="currentReservByUserId" resultMap="BaseResultMap">
+    SELECT
+       a.ID,
+	   a.HOSPITALID,
+	   a.RESERVTIME,
+	   a.RESERVSTATU,
+	   a.USERID,
+	   a.PHONENUM,
+	   a.EMAIL,
+	   a.HOSPITALID,
+	   a.GENDER,
+	   a.CALLNAME,
+	   a.SYMPTOM,
+	   c.HOSPITALNAME,
+	   d.ROLE_LEVEL,
+	   CASE when ISNULL(a.VOLUNID) THEN NULL ELSE (SELECT PHONENUMBER  FROM user_tb  WHERE id = a.VOLUNID) end VOLPHONENUMBER,
+       CASE when ISNULL(a.VOLUNID) THEN NULL ELSE (SELECT EMAIL  FROM user_tb  WHERE id = a.VOLUNID) end VOLEMAIL,
+       CASE when ISNULL(a.VOLUNID) THEN NULL ELSE (SELECT NAMED  FROM user_tb  WHERE id = a.VOLUNID) end VOLNAMED
+    FROM
+	   reserv_tb a,
+	   user_tb b,
+	   hospital_tb c,
+	   role_tb d
+    WHERE
+       a.USERID = b.id
+   AND a.HOSPITALID = c.ID
+   AND b.ROLEID = d.ID
+   AND a.USERID = #{id}
+   AND a.RESERVSTATU != 3
+   AND a.STATU = 'U'
+   AND a.RESERVTIME > NOW()
+    </select>
+
+    <select id="findReservByUserId" resultMap="BaseResultMap">
+    SELECT
+       a.ID,
+	   a.HOSPITALID,
+	   a.RESERVTIME,
+	   a.RESERVSTATU,
+	   a.USERID,
+	   a.PHONENUM,
+	   a.EMAIL,
+	   a.HOSPITALID,
+	   a.GENDER,
+	   a.CALLNAME,
+	   a.SYMPTOM,
+	   c.HOSPITALNAME,
+	   d.ROLE_LEVEL,
+	   CASE when ISNULL(a.VOLUNID) THEN NULL ELSE (SELECT PHONENUMBER  FROM user_tb  WHERE id = a.VOLUNID) end VOLPHONENUMBER,
+       CASE when ISNULL(a.VOLUNID) THEN NULL ELSE (SELECT EMAIL  FROM user_tb  WHERE id = a.VOLUNID) end VOLEMAIL,
+       CASE when ISNULL(a.VOLUNID) THEN NULL ELSE (SELECT NAMED  FROM user_tb  WHERE id = a.VOLUNID) end VOLNAMED
+    FROM
+	   reserv_tb a,
+	   user_tb b,
+	   hospital_tb c,
+	   role_tb d
+    WHERE
+       a.USERID = b.id
+   AND a.HOSPITALID = c.ID
+   AND b.ROLEID = d.ID
+   AND a.USERID = #{id}
+    </select>
+
+
+    <insert id="saveReserv" parameterType="com.manager.woods.reserv.model.ReservTb"  useGeneratedKeys="true" keyProperty="id">
+     INSERT INTO reserv_tb (
+        GENDER,
+		USERID,
+		HOSPITALID,
+		RESERVTIME,
+		RESERVSTATU,
+		PHONENUM,
+		STATU,
+		CREATETIME,
+		EMAIL,
+		CALLNAME,
+		SYMPTOM)
+     VALUES
+	   (
+	    #{gender},
+	    #{userId},
+	    #{hospitalId},
+        #{reservTime},
+        '1',
+        #{phoneNum},
+        'U',
+        now(),
+        #{email},
+        #{callName},
+        #{symptom}
+       );
+
+    </insert>
+
+    <update id="updateReserv" parameterType="com.manager.woods.reserv.model.ReservTb">
+     UPDATE reserv_tb
+     SET
+        GENDER=#{gender},
+		HOSPITALID = #{hospitalId},
+		RESERVTIME = #{reservTime},
+		PHONENUM = #{phoneNum},
+		UPDATETIME = now(),
+		EMAIL = #{email},
+		CALLNAME = #{callName},
+		SYMPTOM = #{symptom}
+     WHERE
+	   ID = #{id}
+   AND USERID = #{userId};
+    </update>
+
+    <select id="selectReservById" resultMap="BaseResultMap">
+    SELECT
+	  RESERVTIME,
+	  USERID,
+      VOLUNID,
+      ID,
+      RESERVSTATU
+    FROM
+	  reserv_tb
+    WHERE
+	  ID = #{resservId}
+	  AND STATU = 'U'
+    </select>
+
+    <update id = "updateMatchById" parameterType = "Map" >
+        UPDATE reserv_tb
+        SET RESERVSTATU = 2,
+        VOLUNID = #{volunId},
+        updateTime = now()
+        WHERE
+        ID = #{reservId}
+    </update>
+
+    <select id = "selectReservByTimeAndVolId" parameterType = "Map" resultMap="BaseResultMap">
+    SELECT
+        ID,
+        USERID
+    FROM
+	    reserv_tb
+    WHERE
+	    RESERVSTATU != 3
+    AND STATU = 'U'
+    AND RESERVTIME = #{reservTime}
+    AND VOLUNID = #{volunId}
+    </select>
+
+    <select id="findALLCommitOrder"  resultType="java.lang.Integer">
+    SELECT
+       count(1)
+    FROM
+	   reserv_tb a,
+	   hospital_tb c
+    WHERE
+       a.HOSPITALID = c.ID
+   AND a.RESERVSTATU = 1
+   AND a.STATU = 'U'
+   AND a.RESERVTIME > NOW()
+    </select>
+
+    <select id="getCommitReserv" parameterType = "Map" resultMap="BaseResultMap">
+    SELECT
+       a.ID,
+	   a.HOSPITALID,
+	   a.RESERVTIME,
+	   a.RESERVSTATU,
+	   a.USERID,
+	   a.PHONENUM,
+	   a.EMAIL,
+	   a.HOSPITALID,
+	   a.GENDER,
+	   a.CALLNAME,
+	   a.SYMPTOM,
+	   c.HOSPITALNAME
+    FROM
+	   reserv_tb a,
+	   hospital_tb c
+    WHERE
+       a.HOSPITALID = c.ID
+   AND a.RESERVSTATU = 1
+   AND a.STATU = 'U'
+   AND a.RESERVTIME > NOW()
+    limit #{startRow},#{limit}
+    </select>
+
+
+    <select id="findMatchOrderByVold" parameterType = "Map" resultMap="BaseResultMap">
+    SELECT
+        a.ID,
+        a.HOSPITALID,
+        a.RESERVTIME,
+        a.GENDER,
+        a.CALLNAME,
+        a.SYMPTOM,
+        c.HOSPITALNAME
+    FROM
+        reserv_tb a,
+        hospital_tb c
+    WHERE
+        a.HOSPITALID = c.ID
+      AND a.RESERVSTATU = 2
+      AND a.STATU = 'U'
+      AND a.RESERVTIME > NOW()
+      AND a.VOLUNID = #{volId}
+    </select>
+
+</mapper>

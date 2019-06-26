@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.manager.woods.user.dao.LoginTbDao" >
+    <resultMap id="BaseResultMap" type="com.manager.woods.user.model.LoginTb" >
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="loginTime" property="loginTime" jdbcType="TIMESTAMP" />
+        <result column="phoneNumber" property="phoneNumber" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="token" property="token" jdbcType="VARCHAR" />
+        <result column="userId" property="userId" jdbcType="INTEGER" />
+        <result column="imei" property="imei" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <insert id="saveLogin" parameterType="com.manager.woods.user.model.LoginTb">
+     INSERT INTO login_tb (
+	    IMEI,
+	    TOKEN,
+	    USERID,
+	    PHONENUM,
+	    EMAIL,
+	    LOGINTIME
+       )
+     VALUES
+	 (
+        #{imei},
+        #{token},
+		#{userId},
+		#{phoneNum},
+		#{email},
+		#{loginTime}
+	);
+    </insert>
+
+</mapper>
+
+

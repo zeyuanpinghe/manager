@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.manager.woods.user.dao.UserTbDao" >
+    <resultMap id="BaseResultMap" type="com.manager.woods.user.model.UserTb" >
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="statu" property="statu" jdbcType="VARCHAR" />
+        <result column="phoneNumber" property="phoneNumber" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="named" property="named" jdbcType="VARCHAR" />
+        <result column="roleId" property="roleId" jdbcType="INTEGER" />
+        <result column="token" property="token" jdbcType="VARCHAR" />
+        <result column="roleLvel" property="roleLvel" jdbcType="VARCHAR" />
+        <result column="imei" property="imei" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="selectUserByPhone" resultMap="BaseResultMap">
+        select
+            a.id,
+			a.PHONENUMBER,
+            a.PASSWORD,
+			a.EMAIL,
+			a.token,
+			b.ROLE_LEVEL roleLvel,
+        CASE
+        WHEN ISNULL(a.NAMED)
+        THEN
+        (
+        CASE
+        WHEN ISNULL(a.PHONENUMBER) THEN
+        a.EMAIL
+        ELSE
+        a.PHONENUMBER
+        END
+        )
+        ELSE
+        a.named
+        END named
+
+        from
+            user_tb a,role_tb b
+        WHERE
+            a.ROLEID = b.ID
+        and a.PHONENUMBER=#{phoneNumber}
+    </select>
+
+    <select id="selectUserByEmail" resultMap="BaseResultMap">
+        select
+            a.id,
+			a.PHONENUMBER,
+            a.PASSWORD,
+			a.EMAIL,
+			a.token,
+			b.ROLE_LEVEL roleLvel,
+			CASE WHEN ISNULL(a.NAMED) THEN (CASE WHEN ISNULL(a.EMAIL) THEN a.PHONENUMBER ELSE a.EMAIL END)
+            ELSE a.named
+            END named
+        from
+            user_tb a,role_tb b
+        WHERE
+            a.ROLEID = b.ID
+        and a.EMAIL=#{email}
+    </select>
+
+    <select id="selectUserById" resultMap="BaseResultMap">
+        select
+            a.id,
+			a.PHONENUMBER,
+            a.PASSWORD,
+			a.EMAIL,
+			a.NAMEd,
+			a.token,
+			b.ROLE_LEVEL roleLvel
+        from
+            user_tb a,role_tb b
+        WHERE
+            a.ROLEID = b.ID
+        and a.id=#{userId}
+    </select>
+
+    <insert id="saveUser" parameterType="com.manager.woods.user.model.UserTb">
+     INSERT INTO user_tb(
+		 PHONENUMBER,
+		 EMAIL,
+		 PASSWORD,
+		 ROLEID,
+		 NAMED,
+		 STATU
+		 )
+	 VALUES (
+	    #{phoneNumber},
+		#{email},
+		#{password},
+		1,
+		#{named},
+		'U'
+		);
+    </insert>
+
+    <update id="updateTokenById" parameterType="com.manager.woods.user.model.UserTb">
+       UPDATE user_tb SET token = #{token} WHERE ID = #{id};
+    </update>
+
+    <select id="selectIdByToken" resultMap="BaseResultMap">
+      select
+        a.id,
+        a.PHONENUMBER,
+        a.PASSWORD,
+        a.EMAIL,
+        a.NAMEd,
+        a.token,
+        b.ROLE_LEVEL roleLvel
+      from
+        user_tb a,role_tb b
+      WHERE
+        a.ROLEID = b.ID
+      AND TOKEN=#{token}
+    </select>
+
+    <update id="updateNamedByUserId">
+       UPDATE user_tb
+          SET UPDATETIME = now(),
+              NAMED = #{named}
+        WHERE ID = #{userId};
+    </update>
+
+    <update id="updatePasswordByUserId">
+       UPDATE user_tb
+          SET PASSWORD = #{newPassword},
+              UPDATETIME = now()
+        WHERE ID = #{userId}
+          and PASSWORD = #{password};
+    </update>
+
+    <update id="rmTokenById">
+       UPDATE user_tb
+          SET UPDATETIME = now(),
+              TOKEN = null
+        WHERE ID = #{userId};
+    </update>
+
+
+    <select id="selectAllVolun" resultType="java.lang.Integer">
+       SELECT
+         count(1)
+       FROM
+         user_tb a
+       WHERE
+        a.ROLEID = 2
+     AND a.STATU = 'U'
+    </select>
+
+    <select id="selectVolunById" resultMap="BaseResultMap">
+       SELECT
+         a.id,
+         a.PHONENUMBER,
+         a.EMAIL,
+         a.NAMED
+       FROM
+         user_tb a
+       WHERE
+         a.ROLEID = 2
+         AND a.STATU = 'U'
+         and a.id = #{userId}
+    </select>
+
+    <select id="findAllVolun" parameterType = "Map" resultMap="BaseResultMap">
+  SELECT
+		a.id,
+		a.PHONENUMBER,
+		a.EMAIL,
+		CASE
+  	WHEN ISNULL(a.NAMED) THEN	(	CASE WHEN ISNULL(a.EMAIL) THEN	a.PHONENUMBER ELSE a.EMAIL END)
+  	ELSE
+		 a.named
+		END named
+   FROM
+	   user_tb a
+   WHERE
+     a.STATU='U'
+   AND a.ROLEID=2
+   limit #{startRow},#{limit}
+    </select>
+
+</mapper>
