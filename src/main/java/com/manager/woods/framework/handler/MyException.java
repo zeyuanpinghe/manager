@@ -1,4 +1,4 @@
-package com.apricot.woods.framework.handler;
+package com.manager.woods.framework.handler;
 
 import lombok.Data;
 import lombok.Getter;

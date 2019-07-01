@@ -1,6 +1,6 @@
-package com.apricot.woods.framework.controller;
+package com.manager.woods.framework.controller;
 
-import com.apricot.woods.framework.utils.AESAppUtils;
+import com.manager.woods.framework.utils.AESAppUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class BaseControllerTest {
 
-    @Value("${apricot.aeskey}")
+    @Value("${manager.aeskey}")
     private String aeskey;
 
     @Test

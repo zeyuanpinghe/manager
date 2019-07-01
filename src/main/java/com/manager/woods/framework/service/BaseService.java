@@ -1,8 +1,8 @@
-package com.apricot.woods.framework.service;
+package com.manager.woods.framework.service;
 
-import com.apricot.woods.framework.handler.MyException;
-import com.apricot.woods.user.model.UserTb;
-import com.apricot.woods.user.service.UserService;
+import com.manager.woods.framework.handler.MyException;
+import com.manager.woods.user.model.UserTb;
+import com.manager.woods.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

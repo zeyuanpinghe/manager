@@ -1,4 +1,4 @@
-package com.apricot.woods.framework.model;
+package com.manager.woods.framework.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;

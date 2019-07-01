@@ -1,15 +1,15 @@
-package com.apricot.woods.user.service.impl;
+package com.manager.woods.user.service.impl;
 
 import com.alibaba.druid.util.StringUtils;
-import com.apricot.woods.framework.handler.MyException;
-import com.apricot.woods.framework.utils.PageAndSizeUtil;
-import com.apricot.woods.reserv.model.ReservTb;
-import com.apricot.woods.user.dao.LogoutTbDao;
-import com.apricot.woods.user.dao.UserTbDao;
-import com.apricot.woods.user.model.LogoutTb;
-import com.apricot.woods.user.model.UserInfo;
-import com.apricot.woods.user.model.UserTb;
-import com.apricot.woods.user.service.UserService;
+import com.manager.woods.framework.handler.MyException;
+import com.manager.woods.framework.utils.PageAndSizeUtil;
+import com.manager.woods.reserv.model.ReservTb;
+import com.manager.woods.user.dao.LogoutTbDao;
+import com.manager.woods.user.dao.UserTbDao;
+import com.manager.woods.user.model.LogoutTb;
+import com.manager.woods.user.model.UserInfo;
+import com.manager.woods.user.model.UserTb;
+import com.manager.woods.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,7 +1,7 @@
-package com.apricot.woods.framework.exception;
+package com.manager.woods.framework.exception;
 
-import com.apricot.woods.framework.constans.ErrorCode;
-import com.apricot.woods.framework.utils.MessageUtil;
+import com.manager.woods.framework.constans.ErrorCode;
+import com.manager.woods.framework.utils.MessageUtil;
 
 public class CommonException extends Exception {
 

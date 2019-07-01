@@ -1,6 +1,6 @@
-package com.apricot.woods.reserv.dao;
+package com.manager.woods.reserv.dao;
 
-import com.apricot.woods.reserv.model.ReservTb;
+import com.manager.woods.reserv.model.ReservTb;
 
 import java.util.Date;
 import java.util.List;

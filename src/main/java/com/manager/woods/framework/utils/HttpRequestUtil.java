@@ -1,9 +1,9 @@
-package com.apricot.woods.framework.utils;
+package com.manager.woods.framework.utils;
 
 import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.apricot.woods.framework.handler.MyException;
+import com.manager.woods.framework.handler.MyException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;

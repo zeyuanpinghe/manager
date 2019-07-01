@@ -1,10 +1,10 @@
-package com.apricot.woods.user.service.impl;
+package com.manager.woods.user.service.impl;
 
 import com.alibaba.druid.util.StringUtils;
-import com.apricot.woods.framework.handler.MyException;
-import com.apricot.woods.framework.utils.AESAppUtils;
-import com.apricot.woods.framework.utils.AESForJs;
-import com.apricot.woods.framework.utils.MD5Util;
+import com.manager.woods.framework.handler.MyException;
+import com.manager.woods.framework.utils.AESAppUtils;
+import com.manager.woods.framework.utils.AESForJs;
+import com.manager.woods.framework.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,16 +12,16 @@ import java.util.Date;
 
 @RestController
 public class UserBaseService {
-    @Value("${apricot.aeskey}")
+    @Value("${manager.aeskey}")
     private String aeskey;
 
-    @Value("${apricot.aesJs}")
+    @Value("${manager.aesJs}")
     private String aesJs;
 
-    @Value("${apricot.md5key}")
+    @Value("${manager.md5key}")
     private String md5key;
 
-    @Value("${apricot.passwdKey}")
+    @Value("${manager.passwdKey}")
     private String passwdKey;
 
     /**

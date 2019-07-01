@@ -1,7 +1,7 @@
-package com.apricot.woods.framework.common;
+package com.manager.woods.framework.common;
 
 
-import com.apricot.woods.framework.constans.ErrorCode;
+import com.manager.woods.framework.constans.ErrorCode;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.io.Serializable;

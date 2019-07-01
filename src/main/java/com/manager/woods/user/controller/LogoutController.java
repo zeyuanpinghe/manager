@@ -1,14 +1,14 @@
-package com.apricot.woods.user.controller;
+package com.manager.woods.user.controller;
 
-import com.apricot.woods.framework.common.Result;
-import com.apricot.woods.framework.handler.MyException;
-import com.apricot.woods.framework.service.BaseService;
-import com.apricot.woods.framework.utils.HttpRequestUtil;
-import com.apricot.woods.framework.utils.ResultUtil;
-import com.apricot.woods.framework.utils.StringCode;
-import com.apricot.woods.user.model.UserInfo;
-import com.apricot.woods.user.service.LoginService;
-import com.apricot.woods.user.service.UserService;
+import com.manager.woods.framework.common.Result;
+import com.manager.woods.framework.handler.MyException;
+import com.manager.woods.framework.service.BaseService;
+import com.manager.woods.framework.utils.HttpRequestUtil;
+import com.manager.woods.framework.utils.ResultUtil;
+import com.manager.woods.framework.utils.StringCode;
+import com.manager.woods.user.model.UserInfo;
+import com.manager.woods.user.service.LoginService;
+import com.manager.woods.user.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

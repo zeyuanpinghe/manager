@@ -1,6 +1,6 @@
-package com.apricot.woods.reserv.service;
+package com.manager.woods.reserv.service;
 
-import com.apricot.woods.reserv.model.ReservTb;
+import com.manager.woods.reserv.model.ReservTb;
 
 import java.util.List;
 

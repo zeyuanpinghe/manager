@@ -1,8 +1,8 @@
-package com.apricot.woods;
+package com.manager.woods;
 
-import com.apricot.woods.framework.utils.ContextUtil;
+import com.manager.woods.framework.utils.ContextUtil;
 
-import com.apricot.woods.framework.utils.CustomDateFormat;
+import com.manager.woods.framework.utils.CustomDateFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.mybatis.spring.annotation.MapperScan;
@@ -20,18 +20,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.ArrayList;
 import java.util.List;
 
-@MapperScan("com.apricot.woods.*.dao")
+@MapperScan("com.manager.woods.*.dao")
 @SpringBootApplication
-public class ApricotWoodsApplication extends SpringBootServletInitializer  implements WebMvcConfigurer {
+public class ManagerWoodsApplication extends SpringBootServletInitializer  implements WebMvcConfigurer {
 
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(ApricotWoodsApplication.class, args);
+		ApplicationContext context = SpringApplication.run(ManagerWoodsApplication.class, args);
         ContextUtil.setSpringContext(context);
 	}
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(ApricotWoodsApplication.class);
+		return builder.sources(ManagerWoodsApplication.class);
 	}
 
 	@Bean

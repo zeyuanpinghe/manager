@@ -1,7 +1,7 @@
-package com.apricot.woods.user.service;
+package com.manager.woods.user.service;
 
-import com.apricot.woods.user.model.UserInfo;
-import com.apricot.woods.user.model.UserTb;
+import com.manager.woods.user.model.UserInfo;
+import com.manager.woods.user.model.UserTb;
 
 import java.util.List;
 

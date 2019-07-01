@@ -1,4 +1,4 @@
-package com.apricot.woods.framework.utils;
+package com.manager.woods.framework.utils;
 
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.support.RequestContextUtils;

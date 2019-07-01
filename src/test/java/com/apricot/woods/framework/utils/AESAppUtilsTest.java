@@ -1,4 +1,4 @@
-package com.apricot.woods.framework.utils;
+package com.manager.woods.framework.utils;
 
 import org.hibernate.validator.constraints.br.TituloEleitoral;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class AESAppUtilsTest {
 
-    @Value("${apricot.aeskey}")
+    @Value("${manager.aeskey}")
     private String aeskey;
 
     @Test

@@ -1,4 +1,4 @@
-package com.apricot.woods.framework.utils;
+package com.manager.woods.framework.utils;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;

@@ -1,12 +1,12 @@
-package com.apricot.woods.reserv.controller;
+package com.manager.woods.reserv.controller;
 
-import com.apricot.woods.framework.common.Result;
-import com.apricot.woods.framework.handler.MyException;
-import com.apricot.woods.framework.service.BaseService;
-import com.apricot.woods.framework.utils.HttpRequestUtil;
-import com.apricot.woods.framework.utils.ResultUtil;
-import com.apricot.woods.reserv.model.ReservTb;
-import com.apricot.woods.reserv.service.ReservService;
+import com.manager.woods.framework.common.Result;
+import com.manager.woods.framework.handler.MyException;
+import com.manager.woods.framework.service.BaseService;
+import com.manager.woods.framework.utils.HttpRequestUtil;
+import com.manager.woods.framework.utils.ResultUtil;
+import com.manager.woods.reserv.model.ReservTb;
+import com.manager.woods.reserv.service.ReservService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

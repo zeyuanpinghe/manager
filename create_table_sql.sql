@@ -1,11 +1,11 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : apricot_woods
+ Source Server         : manager_api
  Source Server Type    : MySQL
  Source Server Version : 80012
  Source Host           : localhost:3306
- Source Schema         : apricot_woods
+ Source Schema         : manager_api
 
  Target Server Type    : MySQL
  Target Server Version : 80012

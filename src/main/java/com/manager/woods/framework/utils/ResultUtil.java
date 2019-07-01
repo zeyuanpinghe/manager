@@ -1,7 +1,7 @@
-package com.apricot.woods.framework.utils;
+package com.manager.woods.framework.utils;
 
-import com.apricot.woods.framework.common.Result;
-import com.apricot.woods.framework.constans.ErrorCode;
+import com.manager.woods.framework.common.Result;
+import com.manager.woods.framework.constans.ErrorCode;
 
 public class ResultUtil {
 

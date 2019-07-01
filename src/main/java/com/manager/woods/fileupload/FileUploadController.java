@@ -1,7 +1,7 @@
-package com.apricot.woods.fileupload;
+package com.manager.woods.fileupload;
 
 import com.alibaba.druid.util.StringUtils;
-import com.apricot.woods.framework.handler.MyException;
+import com.manager.woods.framework.handler.MyException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;

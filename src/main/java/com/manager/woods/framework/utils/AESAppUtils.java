@@ -1,4 +1,4 @@
-package com.apricot.woods.framework.utils;
+package com.manager.woods.framework.utils;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;

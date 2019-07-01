@@ -1,7 +1,7 @@
-package com.apricot.woods.message.dao;
+package com.manager.woods.message.dao;
 
-import com.apricot.woods.message.model.MessageTb;
-import com.apricot.woods.reserv.model.ReservTb;
+import com.manager.woods.message.model.MessageTb;
+import com.manager.woods.reserv.model.ReservTb;
 
 import java.util.List;
 

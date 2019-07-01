@@ -1,7 +1,7 @@
-package com.apricot.woods.Utils;
+package com.manager.woods.Utils;
 
-import com.apricot.woods.framework.utils.AESAppUtils;
-import com.apricot.woods.framework.utils.AESForJs;
+import com.manager.woods.framework.utils.AESAppUtils;
+import com.manager.woods.framework.utils.AESForJs;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,7 +1,7 @@
-package com.apricot.woods.framework.utils;
+package com.manager.woods.framework.utils;
 
 import com.fasterxml.jackson.databind.util.StdDateFormat;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.text.FieldPosition;
 import java.text.ParsePosition;

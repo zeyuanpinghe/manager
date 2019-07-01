@@ -1,7 +1,7 @@
-package com.apricot.woods.user.dao;
+package com.manager.woods.user.dao;
 
-import com.apricot.woods.user.model.LoginTb;
-import com.apricot.woods.user.model.LogoutTb;
+import com.manager.woods.user.model.LoginTb;
+import com.manager.woods.user.model.LogoutTb;
 
 public interface LogoutTbDao {
 

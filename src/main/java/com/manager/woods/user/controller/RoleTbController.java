@@ -1,11 +1,11 @@
-package com.apricot.woods.user.controller;
+package com.manager.woods.user.controller;
 
-import com.apricot.woods.framework.common.Result;
-import com.apricot.woods.framework.constans.ErrorCode;
-import com.apricot.woods.framework.handler.MyException;
-import com.apricot.woods.framework.utils.ResultUtil;
-import com.apricot.woods.user.model.RoleTb;
-import com.apricot.woods.user.service.RoleService;
+import com.manager.woods.framework.common.Result;
+import com.manager.woods.framework.constans.ErrorCode;
+import com.manager.woods.framework.handler.MyException;
+import com.manager.woods.framework.utils.ResultUtil;
+import com.manager.woods.user.model.RoleTb;
+import com.manager.woods.user.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResultUtils;
 import org.springframework.web.bind.annotation.*;

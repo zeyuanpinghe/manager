@@ -1,6 +1,6 @@
-package com.apricot.woods.user.dao;
+package com.manager.woods.user.dao;
 
-import com.apricot.woods.user.model.UserTb;
+import com.manager.woods.user.model.UserTb;
 
 import java.util.List;
 import java.util.Map;

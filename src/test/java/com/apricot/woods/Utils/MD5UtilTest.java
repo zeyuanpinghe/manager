@@ -1,6 +1,6 @@
-package com.apricot.woods.Utils;
+package com.manager.woods.Utils;
 
-import com.apricot.woods.framework.utils.MD5Util;
+import com.manager.woods.framework.utils.MD5Util;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

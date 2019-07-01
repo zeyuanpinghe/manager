@@ -1,4 +1,4 @@
-package com.apricot.woods.hospital.model;
+package com.manager.woods.hospital.model;
 
 import lombok.Data;
 

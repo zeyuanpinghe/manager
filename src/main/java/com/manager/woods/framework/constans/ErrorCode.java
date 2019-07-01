@@ -1,4 +1,4 @@
-package com.apricot.woods.framework.constans;
+package com.manager.woods.framework.constans;
 
 public enum ErrorCode {
     /**

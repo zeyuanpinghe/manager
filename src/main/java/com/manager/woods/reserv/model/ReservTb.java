@@ -1,6 +1,6 @@
-package com.apricot.woods.reserv.model;
+package com.manager.woods.reserv.model;
 
-import com.apricot.woods.framework.model.BaseModel;
+import com.manager.woods.framework.model.BaseModel;
 import lombok.Data;
 
 import java.util.Date;

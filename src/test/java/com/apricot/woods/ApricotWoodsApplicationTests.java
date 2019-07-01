@@ -1,4 +1,4 @@
-package com.apricot.woods;
+package com.manager.woods;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

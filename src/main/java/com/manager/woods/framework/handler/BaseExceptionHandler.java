@@ -1,4 +1,4 @@
-package com.apricot.woods.framework.handler;
+package com.manager.woods.framework.handler;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
